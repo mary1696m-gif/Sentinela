@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mídia Indor - TV</title>
+    <style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+}
+
+body {
+    background:
+        radial-gradient(circle at 10% 20%, #ffffff 0 30px, transparent 31px),
+        radial-gradient(circle at 90% 15%, #ffffff 0 25px, transparent 26px),
+        linear-gradient(135deg, #dff6ff, #f3e9ff, #fff1f7);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.tv-container {
+    display: flex;
+    width: 94vw;
+    height: 90vh;
+    gap: 22px;
+}
+
+.left-panel {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    gap: 22px;
+}
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    gap: 22px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.box {
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border: 5px solid white;
+    border-radius: 32px;
+
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    box-shadow:
+        0 12px 30px rgba(86, 137, 170, 0.15),
+        inset 0 0 0 2px rgba(200, 230, 245, 0.4);
+
+    overflow: hidden;
+}
+
+/* =========================
+   DECORAÇÕES
+========================= */
+
+.box::before {
+    content: "✦";
+    position: absolute;
+    top: 15px;
+    left: 22px;
+
+    color: #ffd76a;
+    font-size: 2vw;
+
+    opacity: 0.8;
+}
+
+.box::after {
+    content: "☁";
+    position: absolute;
+    bottom: 8px;
+    right: 20px;
+
+    color: #c9eefd;
+    font-size: 3vw;
+
+    opacity: 0.8;
+}
+
+/* =========================
+   TÍTULOS
+========================= */
+
+.box-title {
+    color: #4387ad;
+
+    font-size: 2vw;
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+
+    letter-spacing: 1px;
+
+    text-shadow: 1px 2px 0 white;
+}
+
+/* =========================
+   GUICHÊ
+========================= */
+
+.local-box {
+    flex: 1;
+
+    background:
+        linear-gradient(
+            145deg,
+            #d8f5ff,
+            #e8f1ff
+        );
+}
+
+.local-box::before {
+    content: "🧸";
+    font-size: 2.5vw;
+}
+
+.local-number {
+    color: #4387ad;
+
+    font-size: 8vw;
+    font-weight: 900;
+
+    line-height: 1;
+
+    text-shadow:
+        3px 4px 0 #bde7f5;
+}
+
+.local-type {
+    color: #6791a6;
+
+    font-size: 1.8vw;
+    font-weight: bold;
+
+    margin-top: 8px;
+}
+
+/* =========================
+   HISTÓRICO
+========================= */
+
+.history-box {
+    flex: 1;
+
+    justify-content: flex-start;
+    align-items: stretch;
+
+    background: #ffffff;
+}
+
+.history-box .box-title {
+    font-size: 1.6vw;
+    align-self: center;
+}
+
+#history-list {
+    list-style: none;
+
+    width: 100%;
+
+    color: #557c91;
+
+    font-size: 1.35vw;
+
+    font-weight: bold;
+
+    text-align: left;
+}
+
+#history-list li {
+    position: relative;
+
+    margin-bottom: 10px;
+
+    padding: 12px 15px 12px 45px;
+
+    border-radius: 18px;
+
+    background: #f3faff;
+
+    box-shadow: 0 3px 8px rgba(100, 150, 180, 0.08);
+}
+
+#history-list li::before {
+    content: "⭐";
+
+    position: absolute;
+
+    left: 12px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 1.2vw;
+}
+
+/* =========================
+   PACIENTE
+========================= */
+
+.patient-box {
+    flex: 3;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff0f7,
+            #f1eaff,
+            #e8f8ff
+        );
+}
+
+/* balõezinhos */
+
+.patient-box::before {
+    content: "☁  ⭐";
+    top: 18px;
+    left: 25px;
+
+    color: #b9dfee;
+    font-size: 2vw;
+}
+
+.patient-box::after {
+    content: "🌈";
+
+    bottom: 12px;
+    right: 25px;
+
+    font-size: 2.5vw;
+}
+
+/* título */
+
+.patient-box .box-title {
+    color: #8a70b4;
+}
+
+/* nome */
+
+.paciente-name {
+    color: #4387ad;
+
+    font-size: 5.5vw;
+
+    font-weight: 900;
+
+    line-height: 1.1;
+
+    word-break: break-word;
+
+    text-shadow:
+        2px 3px 0 white;
+
+    max-width: 95%;
+}
+
+/* =========================
+   SISTEMA HOSPITALAR
+========================= */
+
+.logo-box {
+    flex: 1;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dff9f2,
+            #e1f5ff
+        );
+}
+
+.logo-text {
+    color: #4387ad;
+
+    font-size: 2.8vw;
+
+    font-weight: 900;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        2px 2px 0 white;
+}
+
+.logo-box::before {
+    content: "🩺";
+    font-size: 2vw;
+}
+
+.logo-box::after {
+    content: "🧸 ⭐";
+    font-size: 1.8vw;
+}
+
+/* =========================
+   ANIMAÇÃO DA CHAMADA
+========================= */
+
+@keyframes flash {
+
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.03);
+    }
+
+    60% {
+        transform: scale(0.99);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.flash {
+    animation: flash 0.5s ease 3;
+}
+.logo-tv {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    z-index: 10;
+}
+
+.logo-tv img {
+    width: 180px;
+    height: auto;
+}
+
+      
+    </style>
+</head>
+<body>
+    
+    <div class="logo-tv">
+    <img src="img/logo-hospital.png" alt="Hospital Infantil">
+    </div>
+    <div class="tv-container">
+
+        <div class="left-panel">
+
+            <div class="box local-box">
+                <div class="box-title" id="local-tipo">GUICHÊ</div>
+                <div class="local-number" id="local-numero">--</div>
+            </div>
+
+            <div class="box history-box">
+                <div class="box-title">ÚLTIMAS CHAMADAS</div>
+                <ul id="history-list"></ul>
+            </div>
+
+        </div>
+
+        <div class="right-panel">
+
+            <div class="box patient-box">
+                <div class="box-title">PACIENTE</div>
+                <div class="paciente-name" id="paciente-name">
+                    AGUARDANDO...
+                </div>
+            </div>
+
+            <div class="box logo-box">
+                <div class="logo-text">Sistema-Hospitalar</div>
+            </div>
+
+        </div>
+
+    </div>
+   
+   <script>
+     let ultimoId = null;
+     //função para buscar a chamada atual e o historico da tv ao mesmo tempo real
+     function atualizar(){
+        fetch("/tv/chamada")
+        .then(r => r.json())
+        .then(data => {
+            const chamada = data.chamada;
+            const historico = data.historico || [];
+        
+        if(chamada){
+    document.getElementById("local-tipo").innerText =
+        chamada.localTipo || "GUICHÊ";
+
+    document.getElementById("local-numero").innerText =
+        chamada.localNumero || "--";
+
+    document.getElementById("paciente-name").innerText =
+        chamada.paciente || "AGUARDANDO...";
+
+    if (chamada.id !== ultimoId) {
+        ultimoId = chamada.id;
+
+        const patientBox = document.querySelector(".patient-box");
+
+        patientBox.classList.remove("flash");
+
+        void patientBox.offsetWidth;
+
+        patientBox.classList.add("flash");
+    }
+}
+
+
+        const list = document.getElementById("history-list");
+        list.innerHTML = "";
+        historico.slice(0, 4).forEach(h => {
+            const li = document.createElement("li");
+            const tipo = h.localTipo ? h.localTipo.substring(0,4) : "GUIC";
+            li.innerText = `${tipo}. ${h.localNumero} - ${h.paciente}`;
+            list.appendChild(li);
+        });
+      })
+
+      .catch(err => console.log("Erro ao buscar chamada:", err));
+     }
+
+     //Polling a cada 2 segundos
+     atualizar();
+     setInterval(atualizar, 2000);
+   </script>
+
+    
+</body>
+</html>
